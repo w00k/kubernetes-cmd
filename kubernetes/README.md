@@ -193,7 +193,35 @@ Revisamos el log del worker.
 kubectl logs deploy/worker
 ```
 
-Exponer puerto 80 del deploy webui.
+Exponer puerto 80 del deploy webui (se puede usar --target-port=8888)
 ```bash
 kubectl expose deploy/webui --type=NodePort --port=80
 ```
+
+## Accediendo a servicio internos y externos
+
+Para levantar el cliente en modo local. 
+```bash
+kubectl proxy
+```
+
+Para exponer un pod en un puerto especifico. 
+```bash
+kubectl port-forward svc/redis 10000:6379
+```
+
+## Dashboard
+
+Instalar el dashboard de kubernetes
+```bash 
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
+
+```
+
+Editar la configuración del service (cambiar de ClusterIP a NodePort).
+```bash 
+kubectl edit service kubernetes-dashboard -n kubernetes-dashboard
+```
+
+Para obtener permisos, seguir la siguiente [guía para crear el token](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md). 
+
