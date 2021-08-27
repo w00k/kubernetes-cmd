@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-05-07T03:26:50Z"
+  labels:
+    app: redis
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:ports:
+          .: {}
+          k:{"port":6379,"protocol":"TCP"}:
+            .: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl-expose
+    operation: Update
+    time: "2021-05-07T03:26:50Z"
+  name: redis
+  namespace: default
+  resourceVersion: "19662"
+  selfLink: /api/v1/namespaces/default/services/redis
+  uid: eac04417-bf01-4624-98a3-3c9896aae498
+spec:
+  clusterIP: 10.103.20.178
+  ports:
+  - port: 6379
+    protocol: TCP
+    targetPort: 6379
+  selector:
+    app: redis
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

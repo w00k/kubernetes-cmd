@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2021-05-07T03:35:24Z"
+  labels:
+    app: webui
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:loadBalancer:
+          f:ingress: {}
+    manager: kube-vpnkit-forwarder
+    operation: Update
+    time: "2021-05-07T03:35:24Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:externalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":80,"protocol":"TCP"}:
+            .: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl-expose
+    operation: Update
+    time: "2021-05-07T03:35:24Z"
+  name: webui
+  namespace: default
+  resourceVersion: "20545"
+  selfLink: /api/v1/namespaces/default/services/webui
+  uid: 70d31434-6922-4749-8943-4dca49764fd4
+spec:
+  clusterIP: 10.96.24.150
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 30062
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: webui
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer:
+    ingress:
+    - hostname: localhost
